@@ -1,72 +1,77 @@
-import React from 'react';
-// import logo from './logo.svg';
-import './App.css';
-import Button from '@material-ui/core/Button';
-// import CssBaseline from '@material-ui/core/CssBaseline';
+import React, { Component } from 'react'
+import NavBar from './components/NavBar'
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-import Box from '@material-ui/core/Box';
-import Link from '@material-ui/core/Link';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-//import MenuIcon from '@material-ui/icons/Menu';
 
-const useStyles = makeStyles({
+import { makeStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+
+const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
   },
-  
-});
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
+  },
+}));
 
-export default function SimpleAppBar() {
+function CenteredGrid() {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" color="default">
-        <Toolbar>
-          <Typography variant="h6" color="inherit">
-            Photos
-          </Typography>
-        </Toolbar>
-      </AppBar>
+      <Grid container spacing={3}>
+        <Grid item xs={12}>
+          <Paper className={classes.paper}>blah 12-col</Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>xs=6</Paper>
+        </Grid>
+        <Grid item xs={6}>
+          <Paper className={classes.paper}>xs=6</Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>xs=3</Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>xs=3</Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>xs=3</Paper>
+        </Grid>
+        <Grid item xs={3}>
+          <Paper className={classes.paper}>xs=3</Paper>
+        </Grid>
+      </Grid>
     </div>
   );
 }
 
-function Copyright() {
+function SimpleContainer() {
   return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      
-    </Typography>
+    <React.Fragment>
+      <CssBaseline />
+      <Container maxWidth="lg">
+        <Typography component="div" style={{ backgroundColor: '#', height: '100vh' }} />
+      </Container>
+    </React.Fragment>
   );
 }
 
-function App() {
-  return (
-    <Container maxWidth="sm">
-     <Box my={4}>
-     <SimpleAppBar/>
-       <Typography variant="h4" component="h1" gutterBottom>
-          React Frontend
-       </Typography>
-       <Typography component="div" />
-          <Button variant="contained" color="primary">
-               Hello World
-          </Button>
-          <Copyright/>
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <NavBar />
+        
+        <CenteredGrid />
 
-      </Box>    
-    </Container> 
-  );
-
+      </div>
+    )
+  }
 }
-
-// export default App;
+export default App
